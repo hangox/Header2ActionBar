@@ -16,8 +16,8 @@
 package com.achep.header2actionbardemo;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.os.AsyncTask;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -52,7 +52,8 @@ public class ListViewFragment extends HeaderFragment {
         setOnHeaderScrollChangedListener(new OnHeaderScrollChangedListener() {
             @Override
             public void onHeaderScrollChanged(float progress, int height, int scroll) {
-                height -= getActivity().getActionBar().getHeight();
+                ActionBarActivity actionBarActivity = (ActionBarActivity) getActivity();
+                height -= actionBarActivity.getSupportActionBar().getHeight();
 
                 progress = (float) scroll / height;
                 if (progress > 1f) progress = 1f;

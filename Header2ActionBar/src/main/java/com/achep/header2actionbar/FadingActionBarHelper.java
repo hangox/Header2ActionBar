@@ -16,9 +16,9 @@
 
 package com.achep.header2actionbar;
 
-import android.app.ActionBar;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
 
 /**
@@ -50,7 +50,6 @@ public class FadingActionBarHelper {
     public void setActionBarBackgroundDrawable(Drawable drawable, boolean mutate) {
         mDrawable = mutate ? drawable.mutate() : drawable;
         mActionBar.setBackgroundDrawable(mDrawable);
-
         if (mAlpha == 255) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
                 mAlpha = mDrawable.getAlpha();

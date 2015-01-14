@@ -17,8 +17,8 @@
 package com.achep.header2actionbar;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +28,9 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ScrollView;
-import android.widget.Space;
+import android.support.v7.widget.Space;
+
+import com.nineoldandroids.view.ViewHelper;
 
 /**
  * Little header fragment.
@@ -99,6 +101,7 @@ public abstract class HeaderFragment extends Fragment {
         mHeaderHeight = mHeader.getLayoutParams().height;
 
         mFakeHeader = new Space(activity);
+
         mFakeHeader.setLayoutParams(
                 new ListView.LayoutParams(0, mHeaderHeight));
 
@@ -207,7 +210,7 @@ public abstract class HeaderFragment extends Fragment {
             final int delta = mHeaderHeight + scrollTo;
             lp.height = mFrameLayout.getHeight() - delta;
             mContentOverlay.setLayoutParams(lp);
-            mContentOverlay.setTranslationY(delta);
+            ViewHelper.setTranslationY(mContentOverlay,delta);
         }
 
         notifyOnHeaderScrollChangeListener(
@@ -217,7 +220,7 @@ public abstract class HeaderFragment extends Fragment {
     }
 
     private void setViewTranslationY(View view, float translationY) {
-        if (view != null) view.setTranslationY(translationY);
+        if (view != null) ViewHelper.setTranslationY(view,translationY);
     }
 
     private void notifyOnHeaderScrollChangeListener(float progress, int height, int scroll) {

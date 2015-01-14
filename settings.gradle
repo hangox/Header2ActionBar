@@ -1,1 +1,2 @@
-include ':Header2ActionBar'
+include ':Header2ActionBar', ':Header2ActionBarDemo'
+project(':Header2ActionBarDemo').projectDir = new File('sample/Header2ActionBarDemo')

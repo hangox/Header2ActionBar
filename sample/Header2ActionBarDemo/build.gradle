@@ -1,28 +1,19 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.6.+'
-    }
-}
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 repositories {
     mavenCentral()
 }
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion '19.0.0'
+    compileSdkVersion 21
+    buildToolsVersion '21.1.1'
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 19
+        targetSdkVersion 21
     }
     buildTypes {
         release {
-            runProguard false
             proguardFile getDefaultProguardFile('proguard-android.txt')
         }
     }
@@ -35,4 +26,6 @@ android {
 
 dependencies {
     compile files('src/main/libs/Header2ActionBar-0.2.1.jar')
+    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile project(':Header2ActionBar')
 }
